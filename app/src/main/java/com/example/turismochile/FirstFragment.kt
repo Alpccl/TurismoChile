@@ -1,34 +1,57 @@
 package com.example.turismochile
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.GridLayout
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.turismochile.databinding.FragmentFirstBinding
+import com.example.turismochile.model.adapter.RegionAdapter
+import com.example.turismochile.viewModel.RegionViewModel
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+
 class FirstFragment : Fragment() {
 
     private lateinit var binding: FragmentFirstBinding
+    private val viewModel : RegionViewModel by activityViewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_first, container, false)
+      binding = FragmentFirstBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+        val adapter = RegionAdapter()
+        binding.rvRegions.adapter = adapter
+        binding.rvRegions.layoutManager = GridLayoutManager(context,1 )
+
+        viewModel.allRegion.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.update(it)
+            }
+        })
+
+        adapter.selectedRegion().observe(viewLifecycleOwner, Observer {
+            it?.let {
+                val bundle = Bundle()
+                bundle.putString("id", it.id)
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
+            }
+        })
+
     }
 }

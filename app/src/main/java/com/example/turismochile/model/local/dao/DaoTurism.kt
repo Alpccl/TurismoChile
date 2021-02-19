@@ -13,6 +13,6 @@ interface DaoTurism {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllTurismoList(ListTurist : List<TurismEntity>)
 
-    @Query("SELECT * FROM region_table")
+    @Query("SELECT * FROM turism_table")
     fun getAllTuristList(): LiveData<List<TurismEntity>>
 }

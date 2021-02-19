@@ -6,12 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".SecondFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_information"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imv_turism2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_turism2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/tv_turism2"
+        android:layout_width="386dp"
+        android:layout_height="437dp"
+        android:layout_marginBottom="62dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/bt_other_turist2"
+        app:layout_constraintStart_toStartOf="@+id/bt_other_turist2" />
+
+    <Button
+        android:id="@+id/bt_video_turist2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/video"
+        app:layout_constraintStart_toStartOf="@+id/tv_turism2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_turism2" />
+
+    <Button
+        android:id="@+id/bt_other_turist2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="9dp"
+        android:text="@string/other_information"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_turism2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

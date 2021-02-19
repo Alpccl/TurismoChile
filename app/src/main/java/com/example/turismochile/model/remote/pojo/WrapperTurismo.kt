@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName
 
 data class WrapperTurismo(
 
-    @SerializedName("description")
-    val description: String,
     @SerializedName("id")
     val id: String,
+    @SerializedName("description")
+    val description: String,
     @SerializedName("image")
     val image: String,
     @SerializedName("Video")

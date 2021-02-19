@@ -2,7 +2,7 @@ package com.example.turismochile.model.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
+import com.example.turismochile.model.remote.pojo.WrapperTurismo
 import org.jetbrains.annotations.NotNull
 
 
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull
 data class TurismEntity(
     @PrimaryKey
     @NotNull
-    val id : String,
+    val id: String,
     val description: String,
     val image: String,
     val video: String

@@ -1,45 +1,43 @@
 package com.example.turismochile.model
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import com.example.turismochile.model.local.dao.DaoRegion
 import com.example.turismochile.model.local.dao.DaoTurism
+import com.example.turismochile.model.local.entities.RegionEntity
+import com.example.turismochile.model.local.entities.TurismEntity
 import com.example.turismochile.model.remote.RetrofitInstance
 import com.example.turismochile.model.remote.fromInternetToRegionEntity
 import com.example.turismochile.model.remote.fromInternetToTuristEntity
 
-class RegionRepository (private val daoRegion: DaoRegion, private val daoTurism: DaoTurism) {
+class RegionRepository(private val region: DaoRegion, private val turism: DaoTurism) {
+
+
     private val networkService = RetrofitInstance.retrofitInstance()
-    val regionListLiveData:
+    val regionList = region.getAllRegionList()
+    val turismList = turism.getAllTuristList()
 
     suspend fun fetchRegion(){
         val service = kotlin.runCatching { networkService.fetchRegionsList() }
-        service.onSuccess{
+        service.onSuccess {
             when(it.code()){
-                200 -> it.body()?.let{
-                    daoRegion.insertAllRegionList(fromInternetToRegionEntity(it))
+                200 -> it.body()?.let {
+                    region.insertListRegion(fromInternetToRegionEntity(it))
+                    turism.insertAllTurismoList(fromInternetToTuristEntity(it))
                 }
-                else -> Log.d("REPO", "${it.code()} - ${it.errorBody()}"
+                else -> Log.d("REPO", "${it.code()} - ${it.errorBody()}")
 
             }
-        }
+           }
         service.onFailure{
             Log.e("REPO", "${it.message}")
         }
     }
-    suspend fun fetchTurism(){
-        val service = kotlin.runCatching { networkService.fetchTurismoList() }
-        service.onSuccess{
-            when(it.code()){
-                200 -> it.body()?.let{
-                    daoTurism.insertAllTurismoList(fromInternetToTuristEntity(it))
-                }
-                else -> Log.d("REPO_TURIST", "${it.code()} - ${it.errorBody()}")
-            }
-        }
-        service.onFailure{
-            Log.d("REPO", "${it.message}")
-        }
+
+
+    fun getAllRegion(id: String) : LiveData<List<RegionEntity>>{
+        return region.getAllRegionList()
     }
 
-    fun
+
 }
