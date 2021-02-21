@@ -13,30 +13,29 @@ import kotlinx.coroutines.launch
  class RegionViewModel (application: Application): AndroidViewModel(application) {
 
 private val repository : RegionRepository
-val allRegion: LiveData<List<RegionEntity>>
-val allTurist: LiveData<List<TurismEntity>>
 
 init {
     val db = RegionDatabase.getDataBase(application)
     val daoRegion = db.daoRegion()
     val daoTurism = db.daoTurism()
     repository = RegionRepository(daoRegion, daoTurism)
-    allRegion = repository.regionList
-    allTurist = repository.turismList
+
+
     viewModelScope.launch {
         repository.fetchRegion()
     }
 }
 
-    fun getRegionList(): LiveData<List<RegionEntity>> = repository.regionList
+    fun getAllRegions() : LiveData<List<RegionEntity>> = repository.RegionListLiveData
 
     private var regionSelected : String = ""
 
-    fun getRegionByRegionFromInternet(region : String) = viewModelScope.launch {
-        regionSelected = region
-        repository.fetchRegion()
+    fun getRegionById(id : String) = viewModelScope.launch {
+        regionSelected = id
+        repository.getRegionByid(id)
     }
 
-
-     fun getInformationTurism(): LiveData<List<TurismEntity>> = repository.turismList
+     fun getInformationById (id: String): LiveData<TurismEntity> {
+         return repository.getInformationById(id)
+     }
 }

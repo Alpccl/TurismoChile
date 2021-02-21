@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.GridLayout
+import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.turismochile.databinding.FragmentFirstBinding
 import com.example.turismochile.model.adapter.RegionAdapter
 import com.example.turismochile.viewModel.RegionViewModel
@@ -37,9 +39,9 @@ class FirstFragment : Fragment() {
 
         val adapter = RegionAdapter()
         binding.rvRegions.adapter = adapter
-        binding.rvRegions.layoutManager = GridLayoutManager(context,1 )
+        binding.rvRegions.layoutManager = LinearLayoutManager(context)
 
-        viewModel.allRegion.observe(viewLifecycleOwner, Observer {
+        viewModel.getAllRegions().observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.update(it)
             }

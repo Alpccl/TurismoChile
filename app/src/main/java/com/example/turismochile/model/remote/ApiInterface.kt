@@ -11,6 +11,6 @@ import retrofit2.http.GET
 interface ApiInterface {
 
 @GET("regiones")
-suspend fun fetchRegionsList(): Response<Regionespojo>
+suspend fun fechRegionCorroutines(): Response<Regionespojo>
 
 }

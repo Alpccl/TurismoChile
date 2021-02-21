@@ -23,11 +23,13 @@
         android:id="@+id/tv_turism2"
         android:layout_width="386dp"
         android:layout_height="437dp"
-        android:layout_marginBottom="62dp"
+        android:layout_marginBottom="68dp"
         android:text="TextView"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bt_other_turist2"
-        app:layout_constraintStart_toStartOf="@+id/bt_other_turist2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/bt_video_turist2"

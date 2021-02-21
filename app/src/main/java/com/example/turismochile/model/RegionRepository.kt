@@ -12,32 +12,33 @@ import com.example.turismochile.model.remote.fromInternetToTuristEntity
 
 class RegionRepository(private val region: DaoRegion, private val turism: DaoTurism) {
 
-
     private val networkService = RetrofitInstance.retrofitInstance()
-    val regionList = region.getAllRegionList()
-    val turismList = turism.getAllTuristList()
+    val RegionListLiveData = region.getAllRegionList()
 
     suspend fun fetchRegion(){
-        val service = kotlin.runCatching { networkService.fetchRegionsList() }
+        val service = kotlin.runCatching { networkService.fechRegionCorroutines() }
         service.onSuccess {
-            when(it.code()){
-                200 -> it.body()?.let {
-                    region.insertListRegion(fromInternetToRegionEntity(it))
-                    turism.insertAllTurismoList(fromInternetToTuristEntity(it))
+            when(it.code()) {
+                   200-> it.body()?.let {
+                       region.insertAllRegion(fromInternetToRegionEntity(it))
+                       turism.insertAllTurismoList(fromInternetToTuristEntity(it))
+                   }
+                else  -> Log.d("REPO", "${it.code()} - ${it.errorBody()}")
+
                 }
-                else -> Log.d("REPO", "${it.code()} - ${it.errorBody()}")
-
-            }
+                 service.onFailure {
+                     Log.e("REPO", "${it.message}")
+                 }
            }
-        service.onFailure{
-            Log.e("REPO", "${it.message}")
-        }
+
     }
 
 
-    fun getAllRegion(id: String) : LiveData<List<RegionEntity>>{
-        return region.getAllRegionList()
+    fun getInformationById (id: String): LiveData<TurismEntity> {
+        return turism.getInformationById(id)
     }
-
+    fun getRegionByid(id: String): LiveData<RegionEntity>{
+        return region.getInformationById(id)
+    }
 
 }

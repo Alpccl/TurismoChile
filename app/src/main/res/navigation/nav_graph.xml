@@ -24,5 +24,17 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_mailFragment"
+            app:destination="@id/mailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mailFragment"
+        android:name="com.example.turismochile.MailFragment"
+        android:label="fragment_mail"
+        tools:layout="@layout/fragment_mail" >
+        <action
+            android:id="@+id/action_mailFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>

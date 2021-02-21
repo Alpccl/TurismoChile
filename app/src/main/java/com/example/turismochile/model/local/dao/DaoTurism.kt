@@ -15,4 +15,8 @@ interface DaoTurism {
 
     @Query("SELECT * FROM turism_table")
     fun getAllTuristList(): LiveData<List<TurismEntity>>
+
+    @Query("SELECT * FROM turism_table WHERE id =:id")
+    fun getInformationById(id: String): LiveData<TurismEntity>
+
 }

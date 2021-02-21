@@ -11,27 +11,28 @@ import com.example.turismochile.databinding.RegionItemListBinding
 import com.example.turismochile.model.local.entities.RegionEntity
 
 class RegionAdapter : RecyclerView.Adapter<RegionAdapter.RegionVH>() {
-    private var listRegion = listOf<RegionEntity>()
+    private var listRegion = emptyList<RegionEntity>()
     private val selectedRegion = MutableLiveData<RegionEntity>()
+    fun selectedRegion(): LiveData<RegionEntity> = selectedRegion
 
     fun update(list: List<RegionEntity>){
         listRegion = list
         notifyDataSetChanged()
     }
 
-    fun selectedRegion(): LiveData<RegionEntity> = selectedRegion
+
 
     inner class RegionVH(private val binding: RegionItemListBinding):
             RecyclerView.ViewHolder(binding.root), View.OnClickListener{
 
         fun bind(regionid: RegionEntity){
-            binding.tvRegion.text = regionid.id.toString()
-           Glide.with(binding.imVRegion).load(regionid.scrImage).into(binding.imVRegion)
+            binding.tvRegion.text = regionid.id
+            Glide.with(binding.imVRegion).load(regionid.scrImage).into(binding.imVRegion)
+            itemView.setOnClickListener(this)
         }
         override fun onClick(v: View?) {
             selectedRegion.value = listRegion[adapterPosition]
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegionVH {
