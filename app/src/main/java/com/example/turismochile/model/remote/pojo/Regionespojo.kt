@@ -1,6 +1,7 @@
 package com.example.turismochile.model.remote.pojo
 
 
+
 import com.google.gson.annotations.SerializedName
 
 data class Regionespojo(

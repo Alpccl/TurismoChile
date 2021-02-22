@@ -36,7 +36,6 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val adapter = RegionAdapter()
         binding.rvRegions.adapter = adapter
         binding.rvRegions.layoutManager = LinearLayoutManager(context)

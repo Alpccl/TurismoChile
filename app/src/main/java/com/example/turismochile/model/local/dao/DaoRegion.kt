@@ -10,6 +10,7 @@ import com.example.turismochile.model.local.entities.TurismEntity
 import retrofit2.http.GET
 
 
+
 @Dao
 interface DaoRegion {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

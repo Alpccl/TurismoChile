@@ -1,5 +1,6 @@
 package com.example.turismochile.model.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import com.example.turismochile.databinding.RegionItemListBinding
 import com.example.turismochile.model.local.entities.RegionEntity
 
 class RegionAdapter : RecyclerView.Adapter<RegionAdapter.RegionVH>() {
-    private var listRegion = emptyList<RegionEntity>()
+    private var listRegion = listOf<RegionEntity>()
     private val selectedRegion = MutableLiveData<RegionEntity>()
     fun selectedRegion(): LiveData<RegionEntity> = selectedRegion
 
