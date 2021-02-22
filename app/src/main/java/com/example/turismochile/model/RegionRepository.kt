@@ -13,13 +13,14 @@ import com.example.turismochile.model.remote.fromInternetToTuristEntity
 class RegionRepository(private val region: DaoRegion, private val turism: DaoTurism) {
 
     private val networkService = RetrofitInstance.retrofitInstance()
-    val RegionListLiveData = region.getAllRegionList()
+    val regionListLiveData = region.getAllRegionList()
 
     suspend fun fetchRegion(){
         val service = kotlin.runCatching { networkService.fechRegionCorroutines() }
         service.onSuccess {
             when(it.code()) {
                    200-> it.body()?.let {
+                       Log.d("Repo", "${it}")
                        region.insertAllRegion(fromInternetToRegionEntity(it))
                        turism.insertAllTurismoList(fromInternetToTuristEntity(it))
                    }

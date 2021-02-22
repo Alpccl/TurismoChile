@@ -25,11 +25,11 @@ init {
         repository.fetchRegion()
     }
 }
-    fun getAllRegions() : LiveData<List<RegionEntity>> = repository.RegionListLiveData
+    fun getAllRegions() : LiveData<List<RegionEntity>> = repository.regionListLiveData
 
-    /*private var regionSelected : String = ""
+    private var regionSelected : String = ""
 
-    fun getRegionById(id : String) = viewModelScope.launch {
+    /*fun getRegionById(id : String) = viewModelScope.launch {
         regionSelected = id
         repository.getRegionByid(id)
     }*/

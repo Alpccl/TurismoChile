@@ -41,7 +41,7 @@ class FirstFragment : Fragment() {
         binding.rvRegions.layoutManager = LinearLayoutManager(context)
 
         viewModel.getAllRegions().observe(viewLifecycleOwner, Observer {
-            it?.let {
+            it?.let {Log.d("Frragment", "${it}")
                 adapter.update(it)
             }
         })
