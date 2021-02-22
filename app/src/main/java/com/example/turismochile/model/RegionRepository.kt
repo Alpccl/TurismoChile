@@ -30,7 +30,6 @@ class RegionRepository(private val region: DaoRegion, private val turism: DaoTur
         service.onFailure {
             Log.e("REPO", "${it.message}")
         }
-
     }
 
 

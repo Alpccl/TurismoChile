@@ -20,9 +20,6 @@ class RegionAdapter : RecyclerView.Adapter<RegionAdapter.RegionVH>() {
         listRegion = list
         notifyDataSetChanged()
     }
-
-
-
     inner class RegionVH(private val binding: RegionItemListBinding):
             RecyclerView.ViewHolder(binding.root), View.OnClickListener{
 
@@ -35,14 +32,11 @@ class RegionAdapter : RecyclerView.Adapter<RegionAdapter.RegionVH>() {
             selectedRegion.value = listRegion[adapterPosition]
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegionVH {
         return RegionVH(RegionItemListBinding.inflate(LayoutInflater.from(parent.context)))
     }
-
     override fun onBindViewHolder(holder: RegionVH, position: Int) {
         holder.bind(listRegion[position])
     }
-
     override fun getItemCount() = listRegion.size
 }
