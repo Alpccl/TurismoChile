@@ -27,10 +27,10 @@ class RegionRepository(private val region: DaoRegion, private val turism: DaoTur
                 else  -> Log.d("REPO", "${it.code()} - ${it.errorBody()}")
 
                 }
-                 service.onFailure {
-                     Log.e("REPO", "${it.message}")
-                 }
            }
+        service.onFailure {
+            Log.e("REPO", "${it.message}")
+        }
 
     }
 

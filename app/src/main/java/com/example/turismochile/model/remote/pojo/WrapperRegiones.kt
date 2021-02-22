@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class WrapperRegiones(
 
 
-    @SerializedName(",id")
+    @SerializedName("id")
     val id: String,
     @SerializedName("image")
     val image: String

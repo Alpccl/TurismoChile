@@ -11,7 +11,7 @@ data class WrapperTurismo(
     val description: String,
     @SerializedName("image")
     val image: String,
-    @SerializedName("Video")
+    @SerializedName("video")
     val video: String,
 
 )
