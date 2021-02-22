@@ -25,7 +25,6 @@ class RegionRepository(private val region: DaoRegion, private val turism: DaoTur
                        turism.insertAllTurismoList(fromInternetToTuristEntity(it))
                    }
                 else  -> Log.d("REPO", "${it.code()} - ${it.errorBody()}")
-
                 }
            }
         service.onFailure {
