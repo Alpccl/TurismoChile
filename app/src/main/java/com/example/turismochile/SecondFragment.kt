@@ -47,7 +47,7 @@ class SecondFragment : Fragment() {
         viewModel.getInformationById(idRegion).observe(viewLifecycleOwner, Observer {
             it?.let {
 
-                Glide.with(binding.imvTurism2).load(it).into(binding.imvTurism2)
+                Glide.with(binding.imvTurism2).load(it.image).into(binding.imvTurism2)
                 binding.tvTurism2.text = it.description
                 binding.btVideoTurist2.setOnClickListener {
 
