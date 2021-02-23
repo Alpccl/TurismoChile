@@ -9,6 +9,6 @@ import org.jetbrains.annotations.NotNull
 data class RegionEntity(
     @PrimaryKey
     @NotNull
-    val id: String,
+    val idRegiones: String,
     val scrImage: String
     )

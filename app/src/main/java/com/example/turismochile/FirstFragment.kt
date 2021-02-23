@@ -49,7 +49,7 @@ class FirstFragment : Fragment() {
         adapter.selectedRegion().observe(viewLifecycleOwner, Observer {
             it?.let {
                 val bundle = Bundle()
-                bundle.putString("id", it.id)
+                bundle.putString("id", it.idRegiones)
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
             }
         })

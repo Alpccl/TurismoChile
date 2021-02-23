@@ -8,7 +8,7 @@ import com.example.turismochile.model.remote.pojo.WrapperRegiones
 
 fun fromInternetToRegionEntity(regionespojo: Regionespojo): List<RegionEntity> {
     return regionespojo.wrapperRegiones.map {
-        RegionEntity(id = it.id, scrImage = it.image)}
+        RegionEntity(idRegiones = it.id, scrImage = it.image)}
 
 }
 fun fromInternetToTuristEntity(regionespojo: Regionespojo): List<TurismEntity> {

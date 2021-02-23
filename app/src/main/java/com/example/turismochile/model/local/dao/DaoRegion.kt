@@ -19,6 +19,6 @@ interface DaoRegion {
     @Query("SELECT * FROM region_table")
     fun getAllRegionList(): LiveData<List<RegionEntity>>
 
-    @Query("SELECT * FROM region_table WHERE id =:id")
+    @Query("SELECT * FROM region_table WHERE idRegiones =:id")
     fun getInformationById(id: String): LiveData<RegionEntity>
 }

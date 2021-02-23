@@ -24,7 +24,7 @@ class RegionAdapter : RecyclerView.Adapter<RegionAdapter.RegionVH>() {
             RecyclerView.ViewHolder(binding.root), View.OnClickListener{
 
         fun bind(region: RegionEntity){
-            binding.tvRegion.text = region.id
+            binding.tvRegion.text = region.idRegiones
             Glide.with(binding.imVRegion).load(region.scrImage).into(binding.imVRegion)
             itemView.setOnClickListener(this)
         }

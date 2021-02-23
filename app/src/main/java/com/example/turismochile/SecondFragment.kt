@@ -1,5 +1,6 @@
 package com.example.turismochile
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -44,9 +45,12 @@ class SecondFragment : Fragment() {
 
         viewModel.getInformationById(idRegion).observe(viewLifecycleOwner, Observer {
             it?.let {
+
                 Glide.with(binding.imvTurism2).load(it).into(binding.imvTurism2)
                 binding.tvTurism2.text = it.description
+                binding.btVideoTurist2.setOnClickListener {
 
+                }
 
             }
         })

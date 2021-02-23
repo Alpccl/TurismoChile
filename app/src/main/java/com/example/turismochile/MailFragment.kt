@@ -41,10 +41,15 @@ class MailFragment : Fragment() {
         mIntent.type = "text/plain"
 
         mIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(mail))
-        mIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
-        mIntent.putExtra(Intent.EXTRA_TEXT, message)
+        mIntent.putExtra(Intent.EXTRA_SUBJECT, (subject))
+        mIntent.putExtra(Intent.EXTRA_TEXT, (message))
 
+        try{
+            startActivity(Intent.createChooser(mIntent, "elija Cliente Mail..." ))
+        }
+        catch (e: Exception){
 
+        }
 
         }
 
